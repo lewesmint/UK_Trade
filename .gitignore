@@ -128,6 +128,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Project specific
+# Project specific - Downloaded data directories
 uk_trade_csvs/
+uk_trade_data/
 *.csv

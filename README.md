@@ -1,17 +1,22 @@
-# UK Trade Data Scraper
+# UK Trade Data Comprehensive Scraper
 
-A Python script to download UK trade data CSV files from the UK Trade Info website.
+A comprehensive Python script to download **ALL** available UK trade data from the UK Trade Info website.
 
 ## Description
 
-This project scrapes the UK Trade Info website (https://www.uktradeinfo.com/trade-data/) to download CSV files containing commodity and country trade data.
+This project scrapes the UK Trade Info website to download the complete collection of UK trade datasets, including current data, historical archives, and regional statistics. It downloads **83 files totaling ~1.3GB** of trade data.
 
 ## Features
 
-- Automatically finds and downloads CSV files containing 'commodity-and-country' data
-- Saves files to a local directory (`uk_trade_csvs`)
-- Provides download progress and completion summary
-- Error handling for failed downloads
+- **Complete Coverage**: Downloads from 3 main data sources
+  - Latest bulk datasets (current monthly data)
+  - Historical archive datasets (2016-2025)
+  - Regional trade statistics (2013-2025)
+- **Organized Storage**: Files are automatically organized into categorized subdirectories
+- **Progress Tracking**: Shows download progress with file counts and completion status
+- **Size Reporting**: Displays file sizes and total download size
+- **Error Handling**: Robust error handling for failed downloads
+- **Comprehensive Summary**: Detailed breakdown of what was downloaded
 
 ## Requirements
 
@@ -32,22 +37,53 @@ cd UK_Trade
 pip install requests beautifulsoup4
 ```
 
+## Data Sources
+
+The scraper downloads from three main sources:
+
+### 1. Latest Bulk Datasets (6 files, ~23MB)
+- Control files (commodity codes and units)
+- Current month exports data
+- Current month imports data
+- Importer details
+- Exporter details
+- Import data by preference
+
+### 2. Historical Archive Datasets (61 files, ~1.2GB)
+- **Control Files**: 2016-2025 (commodity code descriptions)
+- **Exports**: Annual data 2016-2025
+- **Imports**: Semi-annual data 2016-2025
+- **Importer Details**: Historical importer information
+- **Exporter Details**: Historical exporter information
+- **Preference Data**: Import preference data 2021-2025
+
+### 3. Regional Trade Statistics (16 files, ~41MB)
+- **Current Quarters**: Q1 2024 - Q1 2025 (TXT files)
+- **Historical Annual**: 2013-2023 (ZIP files)
+
 ## Usage
 
-Run the scraper:
+Run the comprehensive scraper:
 ```bash
 python scrape_for_csvs.py
 ```
 
 The script will:
-1. Connect to the UK Trade Info website
-2. Find all CSV links containing 'commodity-and-country'
-3. Download them to the `uk_trade_csvs` directory
-4. Display a summary of downloaded files
+1. Create organized directory structure (`uk_trade_data/`)
+2. Download from all three data sources sequentially
+3. Show progress for each category
+4. Provide detailed completion summary
 
-## Output
+**⚠️ Note**: This downloads ~1.3GB of data and may take several minutes.
 
-Downloaded CSV files will be saved in the `uk_trade_csvs` directory in the same location as the script.
+## Output Structure
+
+```
+uk_trade_data/
+├── latest_bulk_datasets/     # Current monthly data (6 files)
+├── archive_datasets/         # Historical data 2016-2025 (61 files)
+└── regional_datasets/        # Regional statistics 2013-2025 (16 files)
+```
 
 ## License
 
